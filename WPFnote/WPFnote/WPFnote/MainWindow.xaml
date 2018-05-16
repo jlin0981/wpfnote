@@ -1,0 +1,91 @@
+﻿<Window x:Class="WPFnote.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFnote"
+        mc:Ignorable="d"
+        WindowStyle="None" Background="Transparent"  AllowsTransparency="True"
+        Title="MainWindow" Height="300" Width="525">
+	<Grid>
+		<!--定義-->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="25"></RowDefinition>
+			<RowDefinition></RowDefinition>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="100"></ColumnDefinition>
+			<ColumnDefinition></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+
+		<!--標題-->
+
+		<Grid Grid.Column="1"  x:Name="TitleBar" MouseMove="TitleBar_MouseMove" >
+
+
+			<TextBlock  FontSize="15" x:Name="Title" Foreground="Gray" Background="White" Margin="0,0,0,0">NewFile.txt</TextBlock>
+
+
+
+			<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1">
+				<Button Width="20" x:Name="MinBtn"  Click="MinBtn_Click" Background="White" BorderBrush="White" Foreground="Gray">一</Button>
+				<Button Width="20" x:Name="MaxBtn"  Click="MaxBtn_Click" Background="White" BorderBrush="White" Foreground="Gray">口</Button>
+				<Button Width="20" x:Name="CloseBtn"  Click="CloseBtn_Click" Background="White" BorderBrush="White" Foreground="Gray">X</Button>
+			</StackPanel>
+		</Grid>
+
+
+		<!--内容-->
+		<Rectangle Grid.Row="1" Fill="Black"></Rectangle>
+		<Rectangle Grid.Row="0" Fill="Black"></Rectangle>
+		<StackPanel Grid.Row="1">
+			<Button Margin="0 0 0 10" x:Name="NewBtn" Click="NewBtn_Click" Background="Black" Foreground="White" BorderBrush="Black">New</Button>
+			<Button Margin="0 0 0 10" x:Name="OpenBtn" Click="OpenBtn_Click" Background="Black" Foreground="White"  BorderBrush="Black">Open</Button>
+			<Button Margin="0 0 0 10" Click="SaveBtn_Click" x:Name="SaveBtn" Background="Black" Foreground="White"  BorderBrush="Black">Save</Button>
+			<Button Margin="0 0 0 10" Click="SaveAsBtn_Click" x:Name="SaveAsBtn" Background="Black" Foreground="White"  BorderBrush="Black">SaveAs</Button>
+		</StackPanel>
+		<!--換色-->
+		<StackPanel Orientation="Horizontal" Grid.Row="1">
+			<Button x:Name="ChangeGray" Click="ChangeGray_Click">
+				<Button.Template>
+					<ControlTemplate>
+						<Ellipse Width="25" Height="25" Fill="Gray" Stroke="LightGray" StrokeThickness="3" Margin="15 150 0 0"></Ellipse>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
+			<Button x:Name="ChangeWhite" Click="ChangeWhite_Click">
+				<Button.Template>
+					<ControlTemplate>
+						<Ellipse Width="25" Height="25" Fill="White" Stroke="Gray" StrokeThickness="3" Margin="15 150 0 0"></Ellipse>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
+		</StackPanel>
+		<StackPanel Orientation="Horizontal" Grid.Row="1">
+			<Button x:Name="ChangeSmall" Click="ChangeSmall_Click">
+				<Button.Template>
+					<ControlTemplate>
+						<TextBlock FontSize="15" Foreground="LightGray" Margin=" 10, 136, 0, 110">A</TextBlock>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
+			<Button x:Name="ChangeNormal" Click="ChangeNormal_Click" Width="30">
+				<Button.Template>
+					<ControlTemplate>
+						<TextBlock FontSize="25" Foreground="LightGray" Margin=" 10, 125, 0, 105">A</TextBlock>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
+			<Button x:Name="ChangeBig" Click="ChangeBig_Click">
+				<Button.Template>
+					<ControlTemplate>
+						<TextBlock FontSize="35" Foreground="LightGray" Margin=" 10 114 0 100">A</TextBlock>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
+		</StackPanel>
+		<ScrollViewer Grid.Row="1" Grid.Column="1"  VerticalScrollBarVisibility="Auto">
+			<TextBox Grid.Column="1" Grid.Row="1"  TextWrapping="Wrap" AcceptsReturn="True" x:Name="Textarea" Foreground="Gray" TextChanged="Textarea_TextChanged" FontSize="20"></TextBox>
+		</ScrollViewer>
+	</Grid>
+</Window>
